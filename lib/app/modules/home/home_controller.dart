@@ -1,3 +1,5 @@
+import 'package:info_app/app/modules/home/shared/models/mission_model.dart';
+import 'package:info_app/app/modules/home/shared/repositories/mission_repository.dart';
 import 'package:mobx/mobx.dart';
 
 part 'home_controller.g.dart';
@@ -5,11 +7,13 @@ part 'home_controller.g.dart';
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
-  @observable
-  int value = 0;
+  final MissionRepository repository;
 
-  @action
-  void increment() {
-    value++;
+  @observable
+  ObservableFuture missions;
+
+  _HomeControllerBase(this.repository){
+    missions = repository.getMissions().asObservable();
   }
+  
 }

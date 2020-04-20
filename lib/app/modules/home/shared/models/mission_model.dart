@@ -42,7 +42,7 @@ class MissionModel {
     updatedAt = json['updatedAt'];
     if (json['users'] != null) {
       users = new List<UserModel>();
-      json[''].forEach((v) {
+      json['users'].forEach((v) {
         users.add(new UserModel.fromJson(v));
       });
     }
