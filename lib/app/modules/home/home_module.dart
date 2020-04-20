@@ -1,3 +1,4 @@
+import 'package:info_app/app/modules/home/shared/repositories/mission_repository.dart';
 import 'package:info_app/app/modules/home/home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:info_app/app/modules/home/home_page.dart';
@@ -5,6 +6,7 @@ import 'package:info_app/app/modules/home/home_page.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => MissionRepository()),
         Bind((i) => HomeController()),
       ];
 
