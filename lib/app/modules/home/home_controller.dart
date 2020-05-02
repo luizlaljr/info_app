@@ -1,4 +1,3 @@
-import 'package:info_app/app/modules/home/shared/models/mission_model.dart';
 import 'package:info_app/app/modules/home/shared/repositories/mission_repository.dart';
 import 'package:mobx/mobx.dart';
 
