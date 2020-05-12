@@ -11,8 +11,8 @@ abstract class _HomeControllerBase with Store {
   @observable
   ObservableFuture missions;
 
-  _HomeControllerBase(this.repository){
+  _HomeControllerBase(this.repository) {
     missions = repository.getMissions().asObservable();
   }
-  
+
 }

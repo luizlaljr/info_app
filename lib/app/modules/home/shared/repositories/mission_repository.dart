@@ -8,10 +8,10 @@ class MissionRepository extends Disposable {
   MissionRepository(this.client);
 
   Future<List<MissionModel>> getMissions() async {
-    final response = await client.get('missions');
-    
+    final response = await client.get('users/2/reports');
+
     List<MissionModel> list = [];
-    for (var json in (response.data as List)) {
+    for (var json in response.data) {
       MissionModel mission = MissionModel.fromJson(json);
       list.add(mission);
     }

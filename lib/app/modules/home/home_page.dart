@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:info_app/app/modules/home/shared/components/listcard.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,15 +13,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  
-  @override
-  HomeController get controller => super.controller;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.person_pin,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, 'Status');
+              }),
+        ],
       ),
       body: Observer(
         builder: (_) {
@@ -35,69 +43,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             );
           }
 
-          var list = controller.missions.value;
-
           return ListView.builder(
-            itemCount: list.length,
+            itemCount: controller.missions.value.length,
             itemBuilder: (BuildContext contexto, int index) {
-              return Card(
-                elevation: 8.0,
-                margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blue[400],
-                  ),
-                  child: ListTile(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                    leading: Container(
-                      padding: EdgeInsets.only(right: 12.0),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          right: BorderSide(
-                            width: 2.0,
-                            color: Colors.white54,
-                          ),
-                        ),
-                      ),
-                      child: Icon(
-                        Icons.local_airport,
-                        color: Colors.white,
-                      ),
-                    ),
-                    title: Text(
-                      list[index].number,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Column(
-                      children: <Widget>[
-                        Icon(
-                          Icons.local_hotel,
-                          color: Colors.yellowAccent,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 4.0, vertical: 0.0),
-                        ),
-                        Text(
-                          list[index].locale,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_right,
-                      color: Colors.white,
-                      size: 30.0,
-                    ),
-                  ),
-                ),
-              );
+              return ListCard(index: index);
             },
           );
         },
