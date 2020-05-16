@@ -5,17 +5,17 @@ import 'package:mockito/mockito.dart';
 class MockClient extends Mock implements Dio {}
 
 void main() {
-  //ReportRepository repository;
+  //UserRepository repository;
   // MockClient client;
 
   setUp(() {
-    // repository = ReportRepository();
+    // repository = UserRepository();
     // client = MockClient();
   });
 
-  group('ReportRepository Test', () {
+  group('UserRepository Test', () {
     //  test("First Test", () {
-    //    expect(repository, isInstanceOf<ReportRepository>());
+    //    expect(repository, isInstanceOf<UserRepository>());
     //  });
 
     test('returns a Post if the http call completes successfully', () async {

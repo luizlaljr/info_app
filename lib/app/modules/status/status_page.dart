@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -25,21 +26,21 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
     return Scaffold(
       body: Observer(
         builder: (_) {
-          if (controller.reports.error != null) {
+          if (controller.user.error != null) {
             return Center(
               child: Text("Error"),
             );
           }
-          if (controller.reports.value == null) {
+          if (controller.user.value == null) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-
+          final user = controller.user.value;
           Size screenSize = MediaQuery.of(context).size;
           String pathCoverImage = "assets/images/c99.jpg";
           String pathProfileImage = "assets/images/pilot.png";
-          String fullName = "1S LUIZ ALBERTO";
+          String fullName = user.post + " " + user.name;
           String status = "Instrutor";
           return Stack(
             children: <Widget>[

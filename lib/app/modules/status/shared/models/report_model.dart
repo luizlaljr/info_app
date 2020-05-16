@@ -1,4 +1,4 @@
-class ReportModel {
+class ReportModel{
   String link;
   num amount;
   double income;
@@ -18,4 +18,5 @@ class ReportModel {
     data['income'] = this.income;
     return data;
   }
+  
 }

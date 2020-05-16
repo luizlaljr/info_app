@@ -13,22 +13,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
 
   @override
   ObservableFuture<dynamic> get missions {
-    _$missionsAtom.context.enforceReadPolicy(_$missionsAtom);
-    _$missionsAtom.reportObserved();
+    _$missionsAtom.reportRead();
     return super.missions;
   }
 
   @override
   set missions(ObservableFuture<dynamic> value) {
-    _$missionsAtom.context.conditionallyRunInAction(() {
+    _$missionsAtom.reportWrite(value, super.missions, () {
       super.missions = value;
-      _$missionsAtom.reportChanged();
-    }, _$missionsAtom, name: '${_$missionsAtom.name}_set');
+    });
   }
 
   @override
   String toString() {
-    final string = 'missions: ${missions.toString()}';
-    return '{$string}';
+    return '''
+missions: ${missions}
+    ''';
   }
 }
