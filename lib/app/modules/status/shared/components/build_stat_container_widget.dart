@@ -12,7 +12,6 @@ class BuildStatContainerWidget extends StatelessWidget {
       margin: EdgeInsets.only(top: 5),
       height: 80,
       decoration: BoxDecoration(
-        //color: Color(0xFFEFF4F7),
         border: Border.all(width: 0.05),
       ),
       width: MediaQuery.of(context).size.width,

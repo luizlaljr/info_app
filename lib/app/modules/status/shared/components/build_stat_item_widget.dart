@@ -123,7 +123,7 @@ String buildLinkText(link) {
   var text;
   switch (link) {
     case "C":
-      text = 'Comissionado';
+      text = 'Comissionamento';
       break;
     case "G":
       text = 'Grat Rep';
