@@ -18,7 +18,7 @@ class BuildStatContainerWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: buildWidget(controller.user.value.report),
+        children: buildWidget(controller.user.value.reports),
       ),
     );
   }

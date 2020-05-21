@@ -7,7 +7,15 @@ part 'login_controller.g.dart';
 class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
-  AuthController auth = Modular.get();
+  AuthController _auth = Modular.get();
+
+  _LoginControllerBase() {
+    try {
+      _auth.getUser().then((value) => {
+            if (value != '') {Modular.to.pushReplacementNamed('/Status')}
+          });
+    } catch (e) {}
+  }
 
   @observable
   bool loading = false;
@@ -19,7 +27,7 @@ abstract class _LoginControllerBase with Store {
   String password = '';
 
   @action
-  setEmail(String value) => email = value + '@fab.mil.br';
+  setEmail(String value) => email = value.trim() + '@fab.mil.br';
 
   @action
   setPassword(String value) => password = value;
@@ -28,8 +36,8 @@ abstract class _LoginControllerBase with Store {
   Future login() async {
     try {
       loading = true;
-      await auth.login(email, password);
-      Modular.to.pushReplacementNamed('/Home');
+      await _auth.login(email, password);
+      Modular.to.pushReplacementNamed('/Status');
     } catch (e) {
       loading = false;
     }

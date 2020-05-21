@@ -4,17 +4,17 @@ import 'package:info_app/app/shared/auth/repositories/token_repository.dart';
 import 'package:info_app/app/shared/utils/custom_dio/custom_dio.dart';
 
 class AuthRepository extends Disposable {
-  final TokenRepository _tokenRepository;
-  final CustomDio _client;
-
-  AuthRepository(this._tokenRepository, this._client);
+  final TokenRepository _tokenRepository = Modular.get();
+  final CustomDio _client = Modular.get();
 
   Future<String> login(String email, String password) async {
-    final response = await _client.dio.post('/login',data: {'email':email, 'password': password});
+    final response = await _client.dio
+        .post('/login', data: {'email': email, 'password': password});
     final token = response.data['token'];
     final id = response.data['id'].toString();
     AuthModel auth = AuthModel(token: token, id: id);
     await _tokenRepository.setAuth(auth);
+
     return id;
   }
 
@@ -23,7 +23,7 @@ class AuthRepository extends Disposable {
     return auth.token;
   }
 
-  getUser() async {
+  Future<String> getUser() async {
     final auth = await _tokenRepository.getAuth();
     return auth.id;
   }

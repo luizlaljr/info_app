@@ -5,20 +5,30 @@ class UserModel {
   String name;
   bool condition;
   String dateCondition;
-  List<ReportModel> report;
+  String document;
+  String operationality;
+  String activity;
+  String project;
+  String sex;
+  List<ReportModel> reports;
 
   UserModel(
-      {this.post, this.name, this.condition, this.dateCondition, this.report});
+      {this.post, this.name, this.condition, this.dateCondition, this.reports});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     post = json['post'];
     name = json['name'];
     condition = json['condition'];
     dateCondition = json['date_condition'];
-    if (json['report'] != null) {
-      report = new List<ReportModel>();
-      json['report'].forEach((v) {
-        report.add(new ReportModel.fromJson(v));
+    document = json['document'];
+    operationality = json['operationality'];
+    activity = json['activity'];
+    project = json['project'];
+    sex = json['sex'];
+    if (json['reports'] != null) {
+      reports = new List<ReportModel>();
+      json['reports'].forEach((v) {
+        reports.add(new ReportModel.fromJson(v));
       });
     }
   }
@@ -29,8 +39,13 @@ class UserModel {
     data['name'] = this.name;
     data['condition'] = this.condition;
     data['date_condition'] = this.dateCondition;
-    if (this.report != null) {
-      data['report'] = this.report.map((v) => v.toJson()).toList();
+    data['document'] = this.document;
+    data['operationality'] = this.operationality;
+    data['activity'] = this.activity;
+    data['project'] = this.project;
+    data['sex'] = this.sex;
+    if (this.reports != null) {
+      data['reports'] = this.reports.map((v) => v.toJson()).toList();
     }
     return data;
   }

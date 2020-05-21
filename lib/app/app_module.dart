@@ -17,14 +17,13 @@ import 'shared/utils/custom_dio/custom_dio.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => AuthController()),
-        Bind((i) =>
-            AuthRepository(i.get<TokenRepository>(), i.get<CustomDio>())),
         Bind((i) => AppController()),
-        Bind((i) => CustomDio(i.get<Dio>())),
-        Bind((i) => Dio()),
-        Bind((i) => CustomInterceptors(i.get<TokenRepository>())),
         Bind((i) => TokenRepository()),
+        Bind((i) => AuthRepository()),
+        Bind((i) => AuthController()),
+        Bind((i) => Dio()),
+        Bind((i) => CustomDio()),
+        Bind((i) => CustomInterceptors()),
       ];
 
   @override

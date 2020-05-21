@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:info_app/app/shared/auth/repositories/token_repository.dart';
 
 class CustomInterceptors extends Interceptor {
-  final TokenRepository tokenRepository;
-
-  CustomInterceptors(this.tokenRepository);
+  final TokenRepository tokenRepository = Modular.get();
 
   @override
   Future<dynamic> onRequest(RequestOptions options) async {

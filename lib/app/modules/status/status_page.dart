@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:info_app/app/modules/status/shared/components/build_fullname_widget.dart';
-import 'package:info_app/app/modules/status/shared/components/build_profile_image_widget.dart';
-import 'package:info_app/app/modules/status/shared/components/build_stat_container_widget.dart';
-import 'shared/components/build_cover_image.dart';
+import 'shared/components/build_fullname_widget.dart';
+import 'shared/components/build_profile_image_widget.dart';
+import 'shared/components/build_stat_container_widget.dart';
 import 'shared/components/build_info_container_widget.dart';
+import 'shared/components/build_project_image_widget.dart';
 import 'shared/components/build_status_widget.dart';
 import 'status_controller.dart';
 
@@ -24,6 +24,23 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.highlight_off),
+          onPressed: controller.logoff,
+        ),
+        title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Modular.to.pushNamedAndRemoveUntil('/Home',ModalRoute.withName('/'));
+              }),
+        ],
+      ),
       body: Observer(
         builder: (_) {
           if (controller.user.error != null) {
@@ -36,25 +53,16 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
               child: CircularProgressIndicator(),
             );
           }
-          final user = controller.user.value;
-          Size screenSize = MediaQuery.of(context).size;
-          String pathCoverImage = "assets/images/c99.jpg";
-          String pathProfileImage = "assets/images/pilot.png";
-          String fullName = user.post + " " + user.name;
-          String status = "Instrutor";
           return Stack(
             children: <Widget>[
-              BuildImageWidget(
-                screenSize: screenSize,
-                pathImage: pathCoverImage,
-              ),
+              BuildProjectImageWidget(),
               SafeArea(
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: screenSize.height / 5.3),
-                    BuildProfileImageWidget(pathImage: pathProfileImage),
-                    BuildFullnameWidget(fullName: fullName),
-                    BuildStatusWidget(status: status),
+                    SizedBox(height: MediaQuery.of(context).size.height / 5.3),
+                    BuildProfileImageWidget(),
+                    BuildFullnameWidget(),
+                    BuildStatusWidget(),
                     BuildStatContainerWidget(),
                     BuildInfoContainerWidget(),
                   ],

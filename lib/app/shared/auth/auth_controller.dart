@@ -13,8 +13,20 @@ abstract class _AuthControllerBase with Store {
   String user;
 
   @action
+  _setUser(String value) => user = value;
+
+  _AuthControllerBase() {
+    _authRepository.getUser().then(_setUser);
+  }
+
+  @action
   Future<String> login(String email, String password) async {
-    return user = await _authRepository.login(email,password).asObservable();
+    return user = await _authRepository.login(email, password).asObservable();
+  }
+
+  @action
+  Future<String> getUser() async {
+    return user = await _authRepository.getUser();
   }
 
   Future logout() {

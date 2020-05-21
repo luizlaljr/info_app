@@ -25,11 +25,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         actions: <Widget>[
           IconButton(
               icon: Icon(
-                Icons.person_pin,
+                Icons.person,
                 color: Colors.white,
               ),
               onPressed: () {
-                Modular.to.pushNamed('Status');
+                Modular.to.pushNamedAndRemoveUntil('/Status',ModalRoute.withName('/'));
               }),
         ],
       ),

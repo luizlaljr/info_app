@@ -27,7 +27,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    child: Text("Login"),
+                    child: Text("Login", style: TextStyle(fontSize: 18)),
                   ),
                 ),
               ],
@@ -39,6 +39,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     child: TextField(
                       onChanged: controller.setEmail,
                       keyboardType: TextInputType.emailAddress,
+                      textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(width: 2, color: Colors.blue),
@@ -47,6 +48,14 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 10,
+                ),
+                Container(
+                    child: Text(
+                  "@fab.mil.br",
+                  style: TextStyle(fontSize: 16),
+                )),
               ],
             ),
             SizedBox(
@@ -54,7 +63,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             ),
             Row(
               children: <Widget>[
-                Expanded(child: Container(child: Text("Senha"))),
+                Expanded(
+                    child: Container(
+                        child: Text("Senha", style: TextStyle(fontSize: 18)))),
               ],
             ),
             Row(
@@ -63,6 +74,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   child: Container(
                     child: TextField(
                       onChanged: controller.setPassword,
+                      textAlign: TextAlign.center,
                       obscureText: true,
                       decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -77,7 +89,16 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             SizedBox(
               height: 50,
             ),
-            RaisedButton(child: Text('Login'),
+            RaisedButton(
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              color: Colors.blue,
+              textColor: Colors.white,
               onPressed: controller.login,
             ),
           ],

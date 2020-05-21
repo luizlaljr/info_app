@@ -5,10 +5,10 @@ import 'package:info_app/app/shared/utils/custom_dio/custom_interceptors.dart';
 import '../constants.dart';
 
 class CustomDio {
-  final Dio dio;
+  final Dio dio = Modular.get();
   final CustomInterceptors customInterceptors = Modular.get();
 
-  CustomDio(this.dio) {
+  CustomDio() {
     dio.options.baseUrl = BASE_URL;
     dio.options.connectTimeout = 5000;
     dio.interceptors.add(customInterceptors);

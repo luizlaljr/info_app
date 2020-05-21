@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'dart:ui' as ui;
 
-class BuildFullnameWidget extends StatelessWidget {
-  final String fullName;
+import '../../status_controller.dart';
 
-  const BuildFullnameWidget({Key key, this.fullName}) : super(key: key);
+class BuildFullnameWidget extends StatelessWidget {
+  final StatusController controller = Modular.get();
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,9 @@ class BuildFullnameWidget extends StatelessWidget {
       fontSize: 24.0,
       fontWeight: FontWeight.w700,
     );
+
+    final user = controller.user.value;
+    final fullName = user.post + " " + user.name;
 
     return Container(
       margin: EdgeInsets.only(top: 12.0),

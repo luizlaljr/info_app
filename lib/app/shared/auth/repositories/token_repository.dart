@@ -9,6 +9,8 @@ class TokenRepository extends Disposable {
     AuthModel auth;
     if (authList.isNotEmpty) {
       auth = AuthModel(token: authList[0], id: authList[1]);
+    } else {
+      auth = _authEmpty();
     }
     return auth;
   }
@@ -20,8 +22,13 @@ class TokenRepository extends Disposable {
   }
 
   Future signOut() async {
-    AuthModel auth = AuthModel(token: '', id: '');
+    AuthModel auth = _authEmpty();
     await setAuth(auth);
+  }
+
+  AuthModel _authEmpty() {
+    AuthModel auth = AuthModel(token: '', id: '');
+    return auth;
   }
 
   //dispose will be called automatically

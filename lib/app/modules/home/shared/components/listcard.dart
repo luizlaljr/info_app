@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:info_app/app/modules/home/home_controller.dart';
+import 'package:info_app/app/shared/utils/formatter.dart';
 
 class ListCard extends StatelessWidget {
   final int index;
@@ -16,7 +17,7 @@ class ListCard extends StatelessWidget {
 
     return Card(
       elevation: 8.0,
-      margin: EdgeInsets.symmetric(horizontal: 6.0, vertical: 6.0),
+      margin: EdgeInsets.symmetric(horizontal: 4.0, vertical: 3.0),
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Container(
@@ -93,7 +94,7 @@ class ListCard extends StatelessWidget {
                                   horizontal: 4.0, vertical: 0.0),
                             ),
                             Text(
-                              mission.start,
+                              Formatter.date(mission.start),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 14.0,
@@ -167,6 +168,7 @@ class ListCard extends StatelessWidget {
                             ),
                           ],
                         ),
+                        SizedBox(height: 4,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -179,7 +181,7 @@ class ListCard extends StatelessWidget {
                                   horizontal: 1.0, vertical: 0.0),
                             ),
                             Text(
-                              mission.income.toStringAsFixed(2),
+                              Formatter.money(mission.income),
                               style: TextStyle(
                                 color: Colors.white,
                               ),

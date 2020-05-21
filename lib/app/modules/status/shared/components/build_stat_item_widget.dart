@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_app/app/modules/status/shared/models/report_model.dart';
+import 'package:info_app/app/shared/utils/formatter.dart';
 
 class BuildStatItemWidget extends StatelessWidget {
   final ReportModel report;
@@ -80,7 +81,7 @@ class BuildStatItemWidget extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    report.income.toStringAsFixed(2),
+                    Formatter.money(report.income),
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
@@ -118,7 +119,7 @@ buildColors(link) {
   return colors;
 }
 
-buildLinkText(link) {
+String buildLinkText(link) {
   var text;
   switch (link) {
     case "C":

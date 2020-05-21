@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
+  intl: ^0.16.1
   shared_preferences: ^0.5.7+2
   flutter_mobx: ^1.1.0
   dio: ^3.0.9
@@ -49,9 +50,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/c99.jpg
-    - assets/images/c97.jpg
-    - assets/images/pilot.png
+    - assets/images/C-99.jpg
+    - assets/images/C-97.jpg
+    - assets/images/man-pilot.png
+    - assets/images/woman-pilot.png
+    - assets/images/man-attendant.png
+    - assets/images/woman-attendant.png
+    - assets/images/man-mechanic.png
+    - assets/images/woman-mechanic.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,7 +1,7 @@
 class ReportModel{
   String link;
   num amount;
-  double income;
+  num income;
 
   ReportModel({this.link, this.amount, this.income});
 

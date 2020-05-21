@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:info_app/app/modules/status/status_controller.dart';
 
-class BuildImageWidget extends StatelessWidget {
-  final Size screenSize;
-  final String pathImage;
-
-  const BuildImageWidget({Key key, this.screenSize, this.pathImage})
-      : super(key: key);
-
+class BuildProjectImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    StatusController controller = Modular.get();
+    var project = controller.user.value.project;
+
+    Size screenSize = MediaQuery.of(context).size;
+    String pathImage = "assets/images/$project.jpg";
+
     return AspectRatio(
       aspectRatio: 2 / 1,
       child: Container(
