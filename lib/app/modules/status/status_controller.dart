@@ -20,6 +20,7 @@ abstract class _StatusControllerBase with Store {
 
   Future logoff() async {
     await Modular.get<AuthController>().logout();
-    Modular.to.pushNamedAndRemoveUntil(Modular.initialRoute, ModalRoute.withName(Modular.initialRoute));
+    Modular.to.pushNamedAndRemoveUntil(
+        Modular.initialRoute, ModalRoute.withName(Modular.initialRoute));
   }
 }

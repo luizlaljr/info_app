@@ -15,14 +15,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomCenter,
-            stops: [0.3, 1],
-            colors: [Colors.blueAccent[400],Colors.indigoAccent[700]],
-          ),
-        ),
+        color: Color(0xFF12365A),
         child: Padding(
           padding: const EdgeInsets.all(35.0),
           child: Column(
@@ -30,10 +23,21 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.0, 0.6],
+                    colors: [
+                      Color(0xFF2E4C6E),
+                      Color(0xFF1C2C43),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 child: TextField(
                   onChanged: (value) {
                     controller.setEmail(value);
-                    //value = controller.getEmail();
                   },
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(
@@ -45,20 +49,19 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.person_outline,
-                      color: Colors.blue[200],
+                      color: Colors.white38,
                     ),
                     suffixText: "@fab.mil.br",
-                    suffixStyle: TextStyle(color: Colors.white70),
-                    
+                    suffixStyle: TextStyle(
+                      color: Colors.white54,
+                    ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 0.5, color: Colors.blue[200]),
-                      borderRadius: BorderRadius.circular(25),
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 0.5, color: Colors.blue[200]),
-                      borderRadius: BorderRadius.circular(25),
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                 ),
@@ -67,6 +70,18 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 height: 15,
               ),
               Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.0, 0.6],
+                    colors: [
+                      Color(0xFF2E4C6E),
+                      Color(0xFF1C2C43),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 child: TextField(
                   onChanged: controller.setPassword,
                   textAlign: TextAlign.center,
@@ -79,17 +94,15 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.lock_outline,
-                      color: Colors.blue[200],
+                      color: Colors.white38,
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 0.5, color: Colors.blue[200]),
-                      borderRadius: BorderRadius.circular(25),
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 0.5, color: Colors.blue[200]),
-                      borderRadius: BorderRadius.circular(25),
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                 ),
@@ -102,6 +115,20 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   Expanded(
                     child: Container(
                       height: 40,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          stops: [0.1, 1],
+                          colors: [
+                            Color(0xFF4782FB),
+                            Color(0xFF00E6FD),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30),
+                        ),
+                      ),
                       child: FlatButton(
                         child: Text(
                           'Login',
@@ -110,14 +137,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        color: Colors.white,
-                        textColor: Colors.blue,
+                        textColor: Colors.white,
                         onPressed: controller.login,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(25),
-                          ),
-                        ),
                       ),
                     ),
                   )

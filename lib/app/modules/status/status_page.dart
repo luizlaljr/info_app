@@ -24,53 +24,62 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.highlight_off),
-          onPressed: controller.logoff,
-        ),
-        title: Text(widget.title),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(
-                Icons.home,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Modular.to.pushNamedAndRemoveUntil('/Home',ModalRoute.withName('/'));
-              }),
-        ],
-      ),
-      body: Observer(
-        builder: (_) {
-          if (controller.user.error != null) {
-            return Center(
-              child: Text("Error"),
-            );
-          }
-          if (controller.user.value == null) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return Stack(
-            children: <Widget>[
-              BuildProjectImageWidget(),
-              SafeArea(
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: MediaQuery.of(context).size.height / 5.3),
-                    BuildProfileImageWidget(),
-                    BuildFullnameWidget(),
-                    BuildStatusWidget(),
-                    BuildStatContainerWidget(),
-                    BuildInfoContainerWidget(),
-                  ],
+      body: Container(
+        color: Color(0xFF22466A),
+        child: Observer(
+          builder: (_) {
+            if (controller.user.error != null) {
+              return Center(
+                child: Text("Erro de Conexão"),
+              );
+            }
+            if (controller.user.value == null) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return Stack(
+              children: <Widget>[
+                BuildProjectImageWidget(),
+                SafeArea(
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: 50,
+                            width: 50,
+                            child: Icon(
+                              Icons.menu,
+                              size: 30,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Container(
+                            height: 50,
+                            width: 50,
+                            child: IconButton(
+                              icon: Icon(Icons.input),
+                              color: Colors.white,
+                              onPressed: controller.logoff,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height / 8),
+                      BuildProfileImageWidget(),
+                      BuildFullnameWidget(),
+                      BuildStatusWidget(),
+                      BuildStatContainerWidget(),
+                      BuildInfoContainerWidget(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
+              ],
+            );
+          },
+        ),
       ),
     );
   }

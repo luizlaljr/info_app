@@ -17,18 +17,23 @@ class ListCard extends StatelessWidget {
 
     return Card(
       elevation: 8.0,
+      color: Colors.white54,
       margin: EdgeInsets.symmetric(horizontal: 4.0, vertical: 3.0),
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(2.0),
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0.5, 1],
-            colors: buildColors(mission.link),
-          ),
-          ),
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.0, 0.6],
+                    colors: [
+                      Color(0xFF2E4C6E),
+                      Color(0xFF1C2C43),
+                    ],
+                  ),
+                  //borderRadius: BorderRadius.circular(30),
+                ),
           height: 100,
           child: ListTile(
             contentPadding:
@@ -57,7 +62,7 @@ class ListCard extends StatelessWidget {
                       )),
                   Icon(
                     buildIcon(mission.kind),
-                    color: Colors.white,
+                    color: buildIconColor(mission.link),
                     size: 25,
                   ),
                 ],
@@ -68,7 +73,7 @@ class ListCard extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                   fontSize: 18,
                   letterSpacing: 6),
             ),
@@ -87,7 +92,7 @@ class ListCard extends StatelessWidget {
                           children: <Widget>[
                             Icon(
                               Icons.flight_takeoff,
-                              color: Colors.yellowAccent,
+                              color: buildIconColor(mission.link),
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -107,7 +112,7 @@ class ListCard extends StatelessWidget {
                           children: <Widget>[
                             Icon(
                               Icons.local_hotel,
-                              color: Colors.yellowAccent,
+                              color: buildIconColor(mission.link),
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -125,7 +130,7 @@ class ListCard extends StatelessWidget {
                             ),
                             Icon(
                               Icons.airport_shuttle,
-                              color: Colors.yellowAccent,
+                              color: buildIconColor(mission.link),
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -141,7 +146,9 @@ class ListCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(width: 30,),
+                    Container(
+                      width: 30,
+                    ),
                     Column(
                       children: <Widget>[
                         Row(
@@ -150,7 +157,7 @@ class ListCard extends StatelessWidget {
                             Text(
                               "Qtd.",
                               style: TextStyle(
-                                color: Colors.yellowAccent,
+                                color: buildIconColor(mission.link),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.0,
                               ),
@@ -168,13 +175,15 @@ class ListCard extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 4,),
+                        SizedBox(
+                          height: 4,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(
                               Icons.attach_money,
-                              color: Colors.yellowAccent,
+                              color: buildIconColor(mission.link),
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -209,6 +218,21 @@ class ListCard extends StatelessWidget {
   }
 }
 
+Color buildIconColor(link) {
+  var color;
+  switch (link) {
+    case "C":
+      color = Colors.lightGreenAccent;
+      break;
+    case "G":
+      color = Colors.amberAccent[400];
+      break;
+    default:
+      color = Colors.lightBlueAccent;
+  }
+  return color;
+}
+
 IconData buildIcon(kind) {
   return kind == "OM" ? Icons.flight : Icons.insert_drive_file;
 }
@@ -226,26 +250,4 @@ String buildLink(link) {
       text = "Diária";
   }
   return text;
-}
-
-buildColors(link) {
-  List<Color> colors = [];
-  var colorBegin;
-  var colorEnd;
-  switch (link) {
-    case "C":
-      colorBegin = Colors.green[500];
-      colorEnd = Colors.green[800];
-      break;
-    case "G":
-      colorBegin = Colors.orange[500];
-      colorEnd = Colors.orange[800];
-      break;
-    default:
-      colorBegin = Colors.blue[500];
-      colorEnd = Colors.blue[800];
-  }
-  colors.add(colorBegin);
-  colors.add(colorEnd);
-  return colors;
 }

@@ -31,6 +31,27 @@ mixin _$AuthController on _AuthControllerBase, Store {
     return _$loginAsyncAction.run(() => super.login(email, password));
   }
 
+  final _$getUserAsyncAction = AsyncAction('_AuthControllerBase.getUser');
+
+  @override
+  Future<String> getUser() {
+    return _$getUserAsyncAction.run(() => super.getUser());
+  }
+
+  final _$_AuthControllerBaseActionController =
+      ActionController(name: '_AuthControllerBase');
+
+  @override
+  dynamic _setUser(String value) {
+    final _$actionInfo = _$_AuthControllerBaseActionController.startAction(
+        name: '_AuthControllerBase._setUser');
+    try {
+      return super._setUser(value);
+    } finally {
+      _$_AuthControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

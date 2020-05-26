@@ -12,7 +12,7 @@ abstract class _LoginControllerBase with Store {
   _LoginControllerBase() {
     try {
       _auth.getUser().then((value) => {
-            if (value != '') {Modular.to.pushReplacementNamed('/Status')}
+            if (value != '') {Modular.to.pushReplacementNamed('/Tabb')}
           });
     } catch (e) {}
   }
@@ -37,7 +37,7 @@ abstract class _LoginControllerBase with Store {
     try {
       loading = true;
       await _auth.login(email, password);
-      Modular.to.pushReplacementNamed('/Status');
+      Modular.to.pushReplacementNamed('/Tabb');
     } catch (e) {
       loading = false;
     }

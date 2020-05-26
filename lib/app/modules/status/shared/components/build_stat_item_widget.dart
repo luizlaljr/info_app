@@ -15,16 +15,16 @@ class BuildStatItemWidget extends StatelessWidget {
         width: 122,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomCenter,
-            stops: [0.1, 1],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            stops: [0.2, 1],
             colors: buildColors(report.link),
           ),
           //,
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey[600],
+              color: Colors.grey[700],
               blurRadius: 15.0, // soften the shadow
               spreadRadius: 0.3, //extend the shadow
               offset: Offset(
@@ -103,17 +103,18 @@ buildColors(link) {
   var colorEnd;
   switch (link) {
     case "C":
-      colorBegin = Colors.green[400];
-      colorEnd = Colors.green[800];
+      colorBegin = Colors.green[700];
+      colorEnd = Colors.lightGreenAccent[700];
       break;
     case "G":
-      colorBegin = Colors.orange[400];
-      colorEnd = Colors.orange[800];
+      colorBegin = Colors.orange[700];
+      colorEnd = Colors.yellow;
       break;
     default:
-      colorBegin = Colors.blue[400];
-      colorEnd = Colors.blue[800];
+      colorBegin = Color(0xFF4782FB);
+      colorEnd = Color(0xFF00D6ED);
   }
+
   colors.add(colorBegin);
   colors.add(colorEnd);
   return colors;

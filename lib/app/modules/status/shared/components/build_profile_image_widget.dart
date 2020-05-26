@@ -17,10 +17,10 @@ class BuildProfileImageWidget extends StatelessWidget {
             image: AssetImage(buildProfileImage(user.sex, user.activity)),
             fit: BoxFit.cover,
           ),
-          color: Colors.white,
+          color: Colors.blue[200],
           borderRadius: BorderRadius.circular(80.0),
           border: Border.all(
-            color: Colors.blue[300],
+            color: Color(0xFF6286AA),
             width: 6.0,
           ),
         ),

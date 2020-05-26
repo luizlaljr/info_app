@@ -17,25 +17,25 @@ class BuildInfoContainerWidget extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Divider(
-              color: Colors.cyan[200],
+              color: Color(0xFF6286AA),
               thickness: 3.5,
               height: 0.5,
             ),
             Divider(
-              color: Colors.grey[400],
+              color: Colors.grey[100],
               thickness: 1,
               height: 5.0,
             ),
             Container(
-              height: 20,
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              height: 26,
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Situação:",
                     style: TextStyle(
-                        color: Colors.blueGrey[800],
+                        color: Colors.white70,
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                         fontStyle: FontStyle.italic),
@@ -43,8 +43,8 @@ class BuildInfoContainerWidget extends StatelessWidget {
                   Text(
                     buildConditionText(user.condition),
                     style: TextStyle(
-                        color: Colors.indigo[800],
-                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         fontSize: 15),
                   ),
                 ],
@@ -55,15 +55,15 @@ class BuildInfoContainerWidget extends StatelessWidget {
               thickness: 1,
             ),
             Container(
-              height: 20,
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              height: 26,
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Data Inicial:",
                     style: TextStyle(
-                        color: Colors.blueGrey[800],
+                        color: Colors.white70,
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                         fontStyle: FontStyle.italic),
@@ -71,8 +71,8 @@ class BuildInfoContainerWidget extends StatelessWidget {
                   Text(
                     Formatter.date(user.dateCondition),
                     style: TextStyle(
-                        color: Colors.indigo[800],
-                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         fontSize: 15),
                   ),
                 ],
@@ -83,15 +83,15 @@ class BuildInfoContainerWidget extends StatelessWidget {
               thickness: 1,
             ),
             Container(
-              height: 20,
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              height: 26,
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Documento:",
                     style: TextStyle(
-                        color: Colors.blueGrey[800],
+                        color: Colors.white70,
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                         fontStyle: FontStyle.italic),
@@ -99,20 +99,20 @@ class BuildInfoContainerWidget extends StatelessWidget {
                   Text(
                     user.document,
                     style: TextStyle(
-                        color: Colors.indigo[800],
-                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
                         fontSize: 15),
                   ),
                 ],
               ),
             ),
             Divider(
-              color: Colors.grey[400],
+              color: Colors.grey[100],
               thickness: 1,
-              height: 9,
+              height: 8,
             ),
             Divider(
-              color: Colors.cyan[200],
+              color: Color(0xFF6286AA),
               thickness: 3.5,
               height: 1.7,
             ),

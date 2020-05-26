@@ -11,7 +11,7 @@ class BuildFullnameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TextStyle _nameTextStyle = TextStyle(
       fontFamily: 'Roboto',
-      color: Colors.blue[700],
+      color: Colors.lightBlue[200],
       fontSize: 24.0,
       fontWeight: FontWeight.w700,
     );
@@ -28,7 +28,7 @@ class BuildFullnameWidget extends StatelessWidget {
             left: 2.0,
             child: new Text(
               fullName,
-              style: _nameTextStyle.copyWith(color: Colors.black.withOpacity(0.3)),
+              style: _nameTextStyle.copyWith(color: Colors.white.withOpacity(0.3)),
             ),
           ),
           new BackdropFilter(
