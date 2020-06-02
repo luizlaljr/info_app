@@ -73,7 +73,16 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     child: CircularProgressIndicator(),
                   );
                 }
-
+                if (controller.missions.value.length == 0) {
+                  return Expanded(
+                    child: Container(
+                      color: Color(0xFF22466A),
+                      child: Center(
+                        child: Text('Não há missoẽs lançadas.', style: TextStyle(color: Colors.white, fontSize: 18),),
+                      ),
+                    ),
+                  );
+                }
                 return Expanded(
                   child: Container(
                     color: Color(0xFF22466A),
