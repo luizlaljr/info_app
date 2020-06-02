@@ -51,6 +51,9 @@ String buildProfileImage(String sex, String activity) {
     case "C":
       sufix = 'attendant';
       break;
+    case "D":
+      sufix = 'doctor';
+      break;
   }
   text = 'assets/images/$prefix-$sufix.png';
   return text;
