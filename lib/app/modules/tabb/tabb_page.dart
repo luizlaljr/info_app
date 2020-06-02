@@ -22,7 +22,7 @@ class _TabbPageState extends ModularState<TabbPage, TabbController> {
       body: PageView(
         
         controller: controller.pageController,
-        children: <Widget>[HomeModule(), StatusModule()],
+        children: <Widget>[StatusModule(), HomeModule(),],
       ),
       bottomNavigationBar: Observer(builder: (BuildContext context) {
         return BottomNavigationBar(
@@ -32,16 +32,7 @@ class _TabbPageState extends ModularState<TabbPage, TabbController> {
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white38,
             showUnselectedLabels: false,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.flight,
-                ),
-                title: Text('Missões'),
-                activeIcon: Icon(
-                  Icons.flight,
-                ),
-              ),
+            items: <BottomNavigationBarItem>[              
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,
@@ -49,6 +40,15 @@ class _TabbPageState extends ModularState<TabbPage, TabbController> {
                 title: Text('Status'),
                 activeIcon: Icon(
                   Icons.person,
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.flight,
+                ),
+                title: Text('Missões'),
+                activeIcon: Icon(
+                  Icons.flight,
                 ),
               ),
             ],
