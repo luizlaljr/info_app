@@ -52,12 +52,14 @@ flutter:
   assets:
     - assets/images/C-99.jpg
     - assets/images/C-97.jpg
+    - assets/images/Both.jpg
     - assets/images/man-pilot.png
     - assets/images/woman-pilot.png
     - assets/images/man-attendant.png
     - assets/images/woman-attendant.png
     - assets/images/man-mechanic.png
     - assets/images/woman-mechanic.png
+    - assets/images/gladio.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
