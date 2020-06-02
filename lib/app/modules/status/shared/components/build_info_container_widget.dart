@@ -97,7 +97,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
                         fontStyle: FontStyle.italic),
                   ),
                   Text(
-                    user.document,
+                    user.document == "" ? "N/A" : user.document ,
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
