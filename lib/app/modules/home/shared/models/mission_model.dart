@@ -4,9 +4,9 @@ class MissionModel {
   String number;
   String step;
   String locale;
-  double amount;
+  num amount;
   int transport;
-  double income;
+  num income;
   String start;
   String end;
 
