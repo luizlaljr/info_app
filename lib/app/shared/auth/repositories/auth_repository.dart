@@ -12,7 +12,8 @@ class AuthRepository extends Disposable {
         .post('/login', data: {'email': email, 'password': password});
     final token = response.data['token'];
     final id = response.data['id'].toString();
-    AuthModel auth = AuthModel(token: token, id: id);
+    final profile = response.data['profile'];
+    AuthModel auth = AuthModel(token: token, id: id, profile: profile);
     await _tokenRepository.setAuth(auth);
 
     return id;

@@ -3,32 +3,39 @@ import 'package:info_app/app/shared/auth/models/auth_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TokenRepository extends Disposable {
-  Future<AuthModel> getAuth() async {
+
+  Future<SharedPreferences> _getShared() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs;
+  }
+
+  Future<AuthModel> getAuth() async {
+    SharedPreferences prefs = await _getShared();
     var authList = prefs.getStringList('auth') ?? [];
-    AuthModel auth;
+    AuthModel auth = AuthModel(token: '', id: '', profile: '');
     if (authList.isNotEmpty) {
-      auth = AuthModel(token: authList[0], id: authList[1]);
-    } else {
-      auth = _authEmpty();
+      auth = AuthModel(
+        token: authList[0],
+        id: authList[1],
+        profile: authList[2],
+      );
     }
     return auth;
   }
 
   Future setAuth(AuthModel auth) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await _getShared();
     auth.token = 'Bearer ' + auth.token;
-    prefs.setStringList('auth', [auth.token, auth.id]);
+    prefs.setStringList('auth', [
+      auth.token,
+      auth.id,
+      auth.profile,
+    ]);
   }
 
   Future signOut() async {
-    AuthModel auth = _authEmpty();
-    await setAuth(auth);
-  }
-
-  AuthModel _authEmpty() {
-    AuthModel auth = AuthModel(token: '', id: '');
-    return auth;
+    SharedPreferences prefs = await _getShared();
+    await prefs.clear();
   }
 
   //dispose will be called automatically
