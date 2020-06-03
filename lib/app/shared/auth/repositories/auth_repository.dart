@@ -19,7 +19,7 @@ class AuthRepository extends Disposable {
     return id;
   }
 
-  getToken() async {
+  Future<String> getToken() async {
     final auth = await _tokenRepository.getAuth();
     return auth.token;
   }
@@ -27,6 +27,11 @@ class AuthRepository extends Disposable {
   Future<String> getUser() async {
     final auth = await _tokenRepository.getAuth();
     return auth.id;
+  }
+
+  Future<String> getProfile() async {
+    final auth = await _tokenRepository.getAuth();
+    return auth.profile;
   }
 
   Future logout() async {

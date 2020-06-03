@@ -15,45 +15,37 @@ class TabbPage extends StatefulWidget {
 }
 
 class _TabbPageState extends ModularState<TabbPage, TabbController> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        
         controller: controller.pageController,
-        children: <Widget>[StatusModule(), HomeModule(),],
+        children: <Widget>[StatusModule(), HomeModule()],
       ),
-      bottomNavigationBar: Observer(builder: (BuildContext context) {
-        return BottomNavigationBar(
+      bottomNavigationBar: Observer(
+        builder: (BuildContext context) {
+          return BottomNavigationBar(
             backgroundColor: Color(0xFF12365A),
             currentIndex: controller.selectIndex,
             onTap: controller.changePage,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white38,
             showUnselectedLabels: false,
-            items: <BottomNavigationBarItem>[              
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                ),
+                icon: Icon(Icons.person),
                 title: Text('Status'),
-                activeIcon: Icon(
-                  Icons.person,
-                ),
+                activeIcon: Icon(Icons.person),
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.flight,
-                ),
+                icon: Icon(Icons.flight),
                 title: Text('Missões'),
-                activeIcon: Icon(
-                  Icons.flight,
-                ),
+                activeIcon: Icon(Icons.flight),
               ),
             ],
-        );
-      }),
+          );
+        },
+      ),
     );
   }
 }
