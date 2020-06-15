@@ -9,6 +9,9 @@ class BuildStatItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final titleSize = 16.0;
+    final textSize = 14.0;
+
     return Transform(
       transform: Matrix4.skewX(0.07),
       child: Container(
@@ -43,10 +46,12 @@ class BuildStatItemWidget extends StatelessWidget {
               Text(
                 buildLinkText(report.link),
                 style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    fontStyle: FontStyle.italic,
-                    letterSpacing: 2.0),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontStyle: FontStyle.italic,
+                  letterSpacing: 2.0,
+                  fontSize: titleSize,
+                ),
               ),
               Divider(height: 0.5, thickness: 0.6, color: Colors.white),
               Row(
@@ -55,7 +60,10 @@ class BuildStatItemWidget extends StatelessWidget {
                   Text(
                     "Qtd.:",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: textSize,
+                    ),
                   ),
                   SizedBox(
                     width: 12,
@@ -63,9 +71,10 @@ class BuildStatItemWidget extends StatelessWidget {
                   Text(
                     report.amount.toStringAsFixed(1),
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 18.0),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: textSize,
+                    ),
                   ),
                 ],
               ),
@@ -75,7 +84,10 @@ class BuildStatItemWidget extends StatelessWidget {
                   Text(
                     "R\$",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: textSize,
+                    ),
                   ),
                   SizedBox(
                     width: 5,
@@ -83,9 +95,10 @@ class BuildStatItemWidget extends StatelessWidget {
                   Text(
                     Formatter.money(report.income),
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 16.0),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: textSize,
+                    ),
                   ),
                 ],
               ),

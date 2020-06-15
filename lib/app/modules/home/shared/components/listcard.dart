@@ -13,7 +13,8 @@ class ListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mission = controller.missions.value[index];
+    final mission = controller.missions.value[index];
+    final iconSize = 18.0;
 
     return Card(
       elevation: 8.0,
@@ -23,17 +24,17 @@ class ListCard extends StatelessWidget {
         padding: const EdgeInsets.all(2.0),
         child: Container(
           decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: [0.0, 0.6],
-                    colors: [
-                      Color(0xFF2E4C6E),
-                      Color(0xFF1C2C43),
-                    ],
-                  ),
-                  //borderRadius: BorderRadius.circular(30),
-                ),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.0, 0.6],
+              colors: [
+                Color(0xFF2E4C6E),
+                Color(0xFF1C2C43),
+              ],
+            ),
+            //borderRadius: BorderRadius.circular(30),
+          ),
           height: 100,
           child: ListTile(
             contentPadding:
@@ -57,7 +58,7 @@ class ListCard extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
+                          fontSize: 14.0,
                         ),
                       )),
                   Icon(
@@ -74,7 +75,7 @@ class ListCard extends StatelessWidget {
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
-                  fontSize: 18,
+                  fontSize: 16,
                   letterSpacing: 6),
             ),
             subtitle: Column(
@@ -93,6 +94,7 @@ class ListCard extends StatelessWidget {
                             Icon(
                               Icons.flight_takeoff,
                               color: buildIconColor(mission.link),
+                              size: iconSize,
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -102,7 +104,7 @@ class ListCard extends StatelessWidget {
                               Formatter.date(mission.start),
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 14.0,
+                                fontSize: 12.0,
                               ),
                             ),
                           ],
@@ -113,6 +115,7 @@ class ListCard extends StatelessWidget {
                             Icon(
                               Icons.local_hotel,
                               color: buildIconColor(mission.link),
+                              size: iconSize,
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -122,6 +125,7 @@ class ListCard extends StatelessWidget {
                               mission.locale,
                               style: TextStyle(
                                 color: Colors.white,
+                                fontSize: 12,
                               ),
                             ),
                             Padding(
@@ -131,6 +135,7 @@ class ListCard extends StatelessWidget {
                             Icon(
                               Icons.airport_shuttle,
                               color: buildIconColor(mission.link),
+                              size: iconSize,
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -140,6 +145,7 @@ class ListCard extends StatelessWidget {
                               mission.transport.toString(),
                               style: TextStyle(
                                 color: Colors.white,
+                                fontSize: 12,
                               ),
                             ),
                           ],
@@ -159,7 +165,7 @@ class ListCard extends StatelessWidget {
                               style: TextStyle(
                                 color: buildIconColor(mission.link),
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16.0,
+                                fontSize: 13.0,
                               ),
                             ),
                             Padding(
@@ -170,7 +176,7 @@ class ListCard extends StatelessWidget {
                               mission.amount.toString(),
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 14.0,
+                                fontSize: 12.0,
                               ),
                             ),
                           ],
@@ -184,6 +190,7 @@ class ListCard extends StatelessWidget {
                             Icon(
                               Icons.attach_money,
                               color: buildIconColor(mission.link),
+                              size: 18,
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -193,6 +200,7 @@ class ListCard extends StatelessWidget {
                               Formatter.money(mission.income),
                               style: TextStyle(
                                 color: Colors.white,
+                                fontSize: 12,
                               ),
                             ),
                           ],
@@ -203,14 +211,14 @@ class ListCard extends StatelessWidget {
                 )
               ],
             ),
-            trailing: Container(
+            /* trailing: Container(
               height: 50,
               child: Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.white,
                 size: 30.0,
               ),
-            ),
+            ), */
           ),
         ),
       ),

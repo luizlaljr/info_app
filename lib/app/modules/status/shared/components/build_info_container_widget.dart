@@ -9,6 +9,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = controller.user.value;
+    final textSize = 12.0;
 
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -37,7 +38,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white70,
                         fontWeight: FontWeight.w600,
-                        fontSize: 15,
+                        fontSize: textSize,
                         fontStyle: FontStyle.italic),
                   ),
                   Text(
@@ -45,7 +46,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
-                        fontSize: 15),
+                        fontSize: textSize),
                   ),
                 ],
               ),
@@ -65,7 +66,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white70,
                         fontWeight: FontWeight.w600,
-                        fontSize: 15,
+                        fontSize: textSize,
                         fontStyle: FontStyle.italic),
                   ),
                   Text(
@@ -73,7 +74,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
-                        fontSize: 15),
+                        fontSize: textSize),
                   ),
                 ],
               ),
@@ -93,15 +94,15 @@ class BuildInfoContainerWidget extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white70,
                         fontWeight: FontWeight.w600,
-                        fontSize: 15,
+                        fontSize: textSize,
                         fontStyle: FontStyle.italic),
                   ),
                   Text(
-                    user.document == "" ? "N/A" : user.document ,
+                    user.document == "" ? "N/A" : user.document,
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
-                        fontSize: 15),
+                        fontSize: textSize),
                   ),
                 ],
               ),
@@ -122,8 +123,6 @@ class BuildInfoContainerWidget extends StatelessWidget {
     );
   }
 }
-
-
 
 String buildConditionText(condition) {
   return condition ? "Comissionado" : "Diária";

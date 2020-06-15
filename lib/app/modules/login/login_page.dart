@@ -56,6 +56,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontSize: 14,
                           letterSpacing: 1.3),
                       textAlign: TextAlign.center,
                       cursorColor: Colors.white,
@@ -98,9 +99,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     child: TextField(
                       onChanged: controller.setPassword,
                       textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
+                          fontSize: 14,
                           letterSpacing: 1.1),
                       obscureText: true,
                       cursorColor: Colors.white,

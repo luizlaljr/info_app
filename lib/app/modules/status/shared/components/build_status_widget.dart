@@ -20,7 +20,7 @@ class BuildStatusWidget extends StatelessWidget {
         style: TextStyle(
           fontFamily: 'Roboto',
           color: Colors.white70,
-          fontSize: 23.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.w600,
           fontStyle: FontStyle.italic,
         ),
