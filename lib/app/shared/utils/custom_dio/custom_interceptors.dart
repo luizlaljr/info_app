@@ -21,4 +21,11 @@ class CustomInterceptors extends Interceptor {
       return options;
     }
   }
+
+  @override
+  Future<dynamic> onError(DioError error) async {
+    if (error.response.statusCode == 401)
+      Modular.to.pushReplacementNamed(Modular.initialRoute);
+    return error;
+  }
 }
