@@ -59,6 +59,8 @@ flutter:
     - assets/images/woman-attendant.png
     - assets/images/man-mechanic.png
     - assets/images/woman-mechanic.png
+    - assets/images/man-doctor.png
+    - assets/images/woman-doctor.png
     - assets/images/gladio.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
