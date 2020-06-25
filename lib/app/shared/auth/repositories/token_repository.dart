@@ -35,7 +35,7 @@ class TokenRepository extends Disposable {
 
   Future signOut() async {
     SharedPreferences prefs = await _getShared();
-    await prefs.clear();
+    await prefs.remove('auth');
   }
 
   //dispose will be called automatically

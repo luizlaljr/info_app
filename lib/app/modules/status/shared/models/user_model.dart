@@ -10,10 +10,21 @@ class UserModel {
   String activity;
   String project;
   String sex;
+  num wage;
   List<ReportModel> reports;
 
   UserModel(
-      {this.post, this.name, this.condition, this.dateCondition, this.reports});
+      {this.post,
+      this.name,
+      this.condition,
+      this.dateCondition,
+      this.document,
+      this.operationality,
+      this.activity,
+      this.project,
+      this.sex,
+      this.wage,
+      this.reports});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     post = json['post'];
@@ -25,6 +36,7 @@ class UserModel {
     activity = json['activity'];
     project = json['project'];
     sex = json['sex'];
+    wage = json['wage'];
     if (json['reports'] != null) {
       reports = new List<ReportModel>();
       json['reports'].forEach((v) {
@@ -44,6 +56,7 @@ class UserModel {
     data['activity'] = this.activity;
     data['project'] = this.project;
     data['sex'] = this.sex;
+    data['wage'] = this.wage;
     if (this.reports != null) {
       data['reports'] = this.reports.map((v) => v.toJson()).toList();
     }

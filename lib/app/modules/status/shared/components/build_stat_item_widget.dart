@@ -4,13 +4,15 @@ import 'package:info_app/app/shared/utils/formatter.dart';
 
 class BuildStatItemWidget extends StatelessWidget {
   final ReportModel report;
+  final num wage;
 
-  const BuildStatItemWidget({Key key, this.report}) : super(key: key);
+  const BuildStatItemWidget({Key key, this.report, this.wage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final titleSize = 16.0;
-    final textSize = 14.0;
+    final titleSize = 15.0;
+    final textSize = 13.0;
 
     return Transform(
       transform: Matrix4.skewX(0.07),
@@ -69,7 +71,7 @@ class BuildStatItemWidget extends StatelessWidget {
                     width: 12,
                   ),
                   Text(
-                    report.amount.toStringAsFixed(1),
+                    report.link == 'G' ? report.amount.toString() + '%' : report.amount.toStringAsFixed(1),
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
@@ -93,7 +95,9 @@ class BuildStatItemWidget extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    Formatter.money(report.income),
+                    Formatter.money(report.link == 'G'
+                        ? report.amount * wage / 100
+                        : report.income),
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
@@ -137,7 +141,7 @@ String buildLinkText(link) {
   var text;
   switch (link) {
     case "C":
-      text = 'Comissionamento';
+      text = 'Comiss';
       break;
     case "G":
       text = 'Grat Rep';

@@ -9,23 +9,23 @@ class MissionModel {
   num income;
   String start;
   String end;
+  num wage;
 
-  MissionModel(
-      {
-      this.kind,
-      this.link,
-      this.number,
-      this.step,
-      this.locale,
-      this.amount,
-      this.transport,
-      this.income,
-      this.start,
-      this.end,
-      });
+  MissionModel({
+    this.kind,
+    this.link,
+    this.number,
+    this.step,
+    this.locale,
+    this.amount,
+    this.transport,
+    this.income,
+    this.start,
+    this.end,
+    this.wage,
+  });
 
   MissionModel.fromJson(Map<String, dynamic> json) {
-    
     kind = json['kind'];
     link = json['link'];
     number = json['number'];
@@ -36,6 +36,7 @@ class MissionModel {
     income = json['income'];
     start = json['start'];
     end = json['end'];
+    wage = json['wage'];
   }
 
   Map<String, dynamic> toJson() {
@@ -50,6 +51,7 @@ class MissionModel {
     data['income'] = this.income;
     data['start'] = this.start;
     data['end'] = this.end;
+    data['wage'] = this.wage;
     return data;
   }
 }

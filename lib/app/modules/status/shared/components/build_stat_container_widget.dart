@@ -31,7 +31,7 @@ List<Widget> buildWidget(user) {
   ));
   if (user.reports.length > 0) {
     for (var i = 0; i < user.reports.length; i++) {
-      list.add(Expanded(child: BuildStatItemWidget(report: user.reports[i])));
+      list.add(Expanded(child: BuildStatItemWidget(report: user.reports[i],wage:user.wage)));
       list.add(Container(
         width: 5,
       ));

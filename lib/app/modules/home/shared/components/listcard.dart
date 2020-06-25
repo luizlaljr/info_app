@@ -58,7 +58,7 @@ class ListCard extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 14.0,
+                          fontSize: mission.number.length < 6 ? 14.0 : 9.0,
                         ),
                       )),
                   Icon(
@@ -173,7 +173,7 @@ class ListCard extends StatelessWidget {
                                   horizontal: 3.0, vertical: 0.0),
                             ),
                             Text(
-                              mission.amount.toString(),
+                              buildAmount(mission.link, mission.amount),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12.0,
@@ -197,7 +197,7 @@ class ListCard extends StatelessWidget {
                                   horizontal: 1.0, vertical: 0.0),
                             ),
                             Text(
-                              Formatter.money(mission.income),
+                              Formatter.money(mission.link == 'G' ? mission.amount * mission.wage / 100 : mission.income),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -241,11 +241,11 @@ Color buildIconColor(link) {
   return color;
 }
 
-IconData buildIcon(kind) {
+IconData buildIcon(String kind) {
   return kind == "OM" ? Icons.flight : Icons.insert_drive_file;
 }
 
-String buildLink(link) {
+String buildLink(String link) {
   var text;
   switch (link) {
     case "C":
@@ -256,6 +256,21 @@ String buildLink(link) {
       break;
     default:
       text = "Diária";
+  }
+  return text;
+}
+
+String buildAmount(String link, num amount) {
+  var text;
+  switch (link) {
+    case "C":
+      text = amount.toStringAsFixed(0);
+      break;
+    case "G":
+      text = amount.toString() + '%';
+      break;
+    default:
+      text = amount.toString();
   }
   return text;
 }
