@@ -24,8 +24,10 @@ class CustomInterceptors extends Interceptor {
 
   @override
   Future<dynamic> onError(DioError error) async {
-    if (error.response.statusCode == 401)
+    if (error.response.statusCode == 401) {
+      await tokenRepository.signOut();
       Modular.to.pushReplacementNamed(Modular.initialRoute);
+    }
     return error;
   }
 }
