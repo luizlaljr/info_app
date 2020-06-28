@@ -11,9 +11,9 @@ class TokenRepository extends Disposable {
 
   Future<AuthModel> getAuth() async {
     SharedPreferences prefs = await _getShared();
-    var authList = prefs.getStringList('auth') ?? [];
+    var authList = prefs.getStringList('auth');
     AuthModel auth = AuthModel(token: '', id: '', profile: '');
-    if (authList.isNotEmpty) {
+    if (authList != null) {
       auth = AuthModel(
         token: authList[0],
         id: authList[1],
