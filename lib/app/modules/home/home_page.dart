@@ -33,7 +33,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     height: 50,
                     width: 50,
                     child: IconButton(
-                      icon: Icon(Icons.menu),
+                      icon: Icon(Icons.search),
                       color: Colors.white,
                       onPressed: () {
                         _scaffoldKey.currentState.openDrawer();

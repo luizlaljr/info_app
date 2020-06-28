@@ -45,17 +45,8 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
                   child: Column(
                     children: <Widget>[
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          Container(
-                            height: 50,
-                            width: 50,
-                            child: Icon(
-                              Icons.menu,
-                              size: 30,
-                              color: Colors.white,
-                            ),
-                          ),
                           Container(
                             height: 50,
                             width: 50,
