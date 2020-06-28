@@ -12,6 +12,9 @@ abstract class _AuthControllerBase with Store {
   @observable
   String user;
 
+  @observable
+  String profile;
+
   @action
   _setUser(String value) => user = value;
 
@@ -27,6 +30,11 @@ abstract class _AuthControllerBase with Store {
   @action
   Future<String> getUser() async {
     return user = await _authRepository.getUser();
+  }
+
+  @action
+  Future<String> getProfile() async {
+    return profile = await _authRepository.getProfile();
   }
 
   Future logout() {

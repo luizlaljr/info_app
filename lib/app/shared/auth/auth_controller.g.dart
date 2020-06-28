@@ -24,6 +24,21 @@ mixin _$AuthController on _AuthControllerBase, Store {
     });
   }
 
+  final _$profileAtom = Atom(name: '_AuthControllerBase.profile');
+
+  @override
+  String get profile {
+    _$profileAtom.reportRead();
+    return super.profile;
+  }
+
+  @override
+  set profile(String value) {
+    _$profileAtom.reportWrite(value, super.profile, () {
+      super.profile = value;
+    });
+  }
+
   final _$loginAsyncAction = AsyncAction('_AuthControllerBase.login');
 
   @override
@@ -36,6 +51,13 @@ mixin _$AuthController on _AuthControllerBase, Store {
   @override
   Future<String> getUser() {
     return _$getUserAsyncAction.run(() => super.getUser());
+  }
+
+  final _$getProfileAsyncAction = AsyncAction('_AuthControllerBase.getProfile');
+
+  @override
+  Future<String> getProfile() {
+    return _$getProfileAsyncAction.run(() => super.getProfile());
   }
 
   final _$_AuthControllerBaseActionController =
@@ -55,7 +77,8 @@ mixin _$AuthController on _AuthControllerBase, Store {
   @override
   String toString() {
     return '''
-user: ${user}
+user: ${user},
+profile: ${profile}
     ''';
   }
 }
