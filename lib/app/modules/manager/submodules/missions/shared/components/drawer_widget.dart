@@ -94,7 +94,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         thickness: 0.5,
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 20),
+                        margin: EdgeInsets.only(top: 15),
                         height: 35,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
