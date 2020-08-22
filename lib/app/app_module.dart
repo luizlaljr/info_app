@@ -28,8 +28,6 @@ class AppModule extends MainModule {
   List<Router> get routers => [
         Router(Modular.initialRoute, module: LoginModule()),
         Router("/Tabb", module: TabbModule()),
-        /* Router("/Home", module: HomeModule()),
-        Router("/Status", module: StatusModule()), */
       ];
 
   @override

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:info_app/app/modules/home/shared/components/drawer_widget.dart';
 import 'package:info_app/app/modules/home/shared/components/listcard.dart';
+import 'package:info_app/app/modules/home/shared/models/mission_model.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +21,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: DrawerWidget(),
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -64,13 +68,29 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             Observer(
               builder: (_) {
                 if (controller.missions.error != null) {
-                  return Center(
-                    child: Text('Erro de Conexão!'),
+                  return Expanded(
+                    child: Container(
+                      color: Color(0xFF22466A),
+                      child: Center(
+                        child: Text(
+                          'Erro de Conexão!',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
                   );
                 }
                 if (controller.missions.value == null) {
-                  return Center(
-                    child: CircularProgressIndicator(),
+                  return Expanded(
+                    child: Container(
+                      color: Color(0xFF22466A),
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
                   );
                 }
                 if (controller.missions.value.length == 0) {
@@ -78,18 +98,25 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     child: Container(
                       color: Color(0xFF22466A),
                       child: Center(
-                        child: Text('Não há missoẽs lançadas.', style: TextStyle(color: Colors.white, fontSize: 18),),
+                        child: Text(
+                          'Não há missoẽs lançadas.',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
                       ),
                     ),
                   );
                 }
+                List<MissionModel> missionsList = buildMissionsList(controller);
                 return Expanded(
                   child: Container(
                     color: Color(0xFF22466A),
                     child: ListView.builder(
-                      itemCount: controller.missions.value.length,
+                      itemCount: missionsList.length,
                       itemBuilder: (BuildContext contexto, int index) {
-                        return ListCard(index: index);
+                        return ListCard(
+                          index: index,
+                          missionsList: missionsList,
+                        );
                       },
                     ),
                   ),
@@ -101,4 +128,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
     );
   }
+}
+
+List<MissionModel> buildMissionsList(controller) {
+  if (controller.filteredMissions == null) {
+    return controller.missions.value;
+  }
+  if (controller.filteredMissions.isEmpty) {
+    return controller.missions.value;
+  }
+  return controller.filteredMissions;
 }

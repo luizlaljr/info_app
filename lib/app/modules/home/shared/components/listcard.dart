@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:info_app/app/modules/home/home_controller.dart';
+import 'package:info_app/app/modules/home/shared/models/mission_model.dart';
 import 'package:info_app/app/shared/utils/formatter.dart';
 
 class ListCard extends StatelessWidget {
   final int index;
+  final List<MissionModel> missionsList;
 
-  const ListCard({Key key, this.index}) : super(key: key);
+  const ListCard({Key key, this.index, this.missionsList}) : super(key: key);
 
   HomeController get controller => Modular.get();
 
   @override
   Widget build(BuildContext context) {
-    final mission = controller.missions.value[index];
+    final mission = missionsList[index];
     final iconSize = 18.0;
 
     return Card(
@@ -211,14 +213,6 @@ class ListCard extends StatelessWidget {
                 )
               ],
             ),
-            /* trailing: Container(
-              height: 50,
-              child: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.white,
-                size: 30.0,
-              ),
-            ), */
           ),
         ),
       ),

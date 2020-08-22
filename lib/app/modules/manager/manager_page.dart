@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:info_app/app/modules/manager/shared/components/drawer_widget.dart';
 import 'package:info_app/app/modules/manager/shared/components/listcard.dart';
+import 'package:info_app/app/modules/manager/shared/models/manager_model.dart';
 import 'manager_controller.dart';
 
 class ManagerPage extends StatefulWidget {
@@ -19,7 +21,9 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: DrawerWidget(),
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -55,7 +59,7 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
                     child: IconButton(
                       icon: Icon(Icons.input),
                       color: Colors.white,
-                      onPressed: (){},
+                      onPressed: controller.logoff,
                     ),
                   ),
                 ],
@@ -64,13 +68,23 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
             Observer(
               builder: (_) {
                 if (controller.manager.error != null) {
-                  return Center(
-                    child: Text('Erro de Conexão!'),
+                  return Expanded(
+                    child: Container(
+                      color: Color(0xFF22466A),
+                      child: Center(
+                        child: Text('Erro de Conexão!'),
+                      ),
+                    ),
                   );
                 }
                 if (controller.manager.value == null) {
-                  return Center(
-                    child: CircularProgressIndicator(),
+                  return Expanded(
+                    child: Container(
+                      color: Color(0xFF22466A),
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
                   );
                 }
                 if (controller.manager.value.length == 0) {
@@ -78,18 +92,25 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
                     child: Container(
                       color: Color(0xFF22466A),
                       child: Center(
-                        child: Text('Não há militares cadastrados.', style: TextStyle(color: Colors.white, fontSize: 18),),
+                        child: Text(
+                          'Não há militares cadastrados.',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
                       ),
                     ),
                   );
                 }
+                List<ManagerModel> managerList = buildManagerList(controller);
                 return Expanded(
                   child: Container(
                     color: Color(0xFF22466A),
                     child: ListView.builder(
-                      itemCount: controller.manager.value.length,
+                      itemCount: managerList.length,
                       itemBuilder: (BuildContext contexto, int index) {
-                        return ListCard(index: index);
+                        return ListCard(
+                          index: index,
+                          managerList: managerList,
+                        );
                       },
                     ),
                   ),
@@ -101,4 +122,14 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
       ),
     );
   }
+}
+
+List<ManagerModel> buildManagerList(controller) {
+  if (controller.filteredManager == null) {
+    return controller.manager.value;
+  }
+  if (controller.filteredManager.isEmpty) {
+    return controller.manager.value;
+  }
+  return controller.filteredManager;
 }

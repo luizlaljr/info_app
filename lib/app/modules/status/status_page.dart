@@ -29,13 +29,26 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
         child: Observer(
           builder: (_) {
             if (controller.user.error != null) {
-              return Center(
-                child: Text("Erro de Conexão"),
+              return 
+                Container(
+                  color: Color(0xFF22466A),
+                  child: Center(
+                    child: Text(
+                      'Erro de Conexão!',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
               );
             }
             if (controller.user.value == null) {
-              return Center(
-                child: CircularProgressIndicator(),
+              return Container(
+                  color: Color(0xFF22466A),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
               );
             }
             return Stack(
@@ -58,12 +71,19 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height / 9),
-                      BuildProfileImageWidget(),
-                      BuildFullnameWidget(),
-                      BuildStatusWidget(),
-                      BuildStatContainerWidget(),
-                      BuildInfoContainerWidget(),
+                      Flex(
+                        direction: Axis.vertical,
+                            children: <Widget>[
+                              SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height / 11),
+                              BuildProfileImageWidget(),
+                              BuildFullnameWidget(),
+                              BuildStatusWidget(),
+                              BuildStatContainerWidget(),
+                              BuildInfoContainerWidget(),
+                            ],
+                      ),
                     ],
                   ),
                 ),

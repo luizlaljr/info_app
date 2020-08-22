@@ -48,7 +48,7 @@ List<Widget> buildWidgets(profile) {
   Widget homeWidget = HomeModule();
   list.add(homeWidget);
   if (profile != 'C') {
-    Widget managerWidget = ManagerModule();
+    Widget managerWidget = RouterOutlet(module: ManagerModule());
     list.add(managerWidget);
   }
   return list;

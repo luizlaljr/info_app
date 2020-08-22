@@ -1,4 +1,5 @@
 class MissionModel {
+  int id;
   String kind;
   String link;
   String number;
@@ -12,6 +13,7 @@ class MissionModel {
   num wage;
 
   MissionModel({
+    this.id,
     this.kind,
     this.link,
     this.number,
@@ -26,6 +28,7 @@ class MissionModel {
   });
 
   MissionModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     kind = json['kind'];
     link = json['link'];
     number = json['number'];
@@ -41,6 +44,7 @@ class MissionModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     data['kind'] = this.kind;
     data['link'] = this.link;
     data['number'] = this.number;

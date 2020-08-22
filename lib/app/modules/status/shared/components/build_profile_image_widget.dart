@@ -32,7 +32,7 @@ class BuildProfileImageWidget extends StatelessWidget {
 String buildProfileImage(String sex, String activity) {
   var text;
   var prefix;
-  var sufix;
+  var main;
   switch (sex) {
     case "M":
       prefix = 'man';
@@ -43,18 +43,18 @@ String buildProfileImage(String sex, String activity) {
   }
   switch (activity) {
     case "P":
-      sufix = 'pilot';
+      main = 'pilot';
       break;
     case "M":
-      sufix = 'mechanic';
+      main = 'mechanic';
       break;
     case "C":
-      sufix = 'attendant';
+      main = 'attendant';
       break;
     case "D":
-      sufix = 'doctor';
+      main = 'doctor';
       break;
   }
-  text = 'assets/images/$prefix-$sufix.png';
+  text = 'assets/images/$prefix-$main-w.png';
   return text;
 }

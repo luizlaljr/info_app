@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:info_app/app/modules/status/shared/models/user_model.dart';
 import 'package:info_app/app/modules/status/status_controller.dart';
 import 'package:info_app/app/shared/utils/formatter.dart';
 
@@ -8,7 +9,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = controller.user.value;
+    final UserModel user = controller.user.value;
     final textSize = 12.0;
 
     return Container(
@@ -28,7 +29,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
               height: 5.0,
             ),
             Container(
-              height: 26,
+              height: 18,
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +57,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
               thickness: 1,
             ),
             Container(
-              height: 26,
+              height: 18,
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +85,35 @@ class BuildInfoContainerWidget extends StatelessWidget {
               thickness: 1,
             ),
             Container(
-              height: 26,
+              height: 18,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Módulo:",
+                    style: TextStyle(
+                        color: Colors.white70,
+                        fontWeight: FontWeight.w600,
+                        fontSize: textSize,
+                        fontStyle: FontStyle.italic),
+                  ),
+                  Text(
+                   'Não',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: textSize),
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              color: Colors.grey[300],
+              thickness: 1,
+            ),
+            Container(
+              height: 18,
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

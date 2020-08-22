@@ -7,19 +7,21 @@ import 'package:info_app/app/shared/utils/formatter.dart';
 
 class ListCard extends StatelessWidget {
   final int index;
+  final List<ManagerModel> managerList;
 
-  const ListCard({Key key, this.index}) : super(key: key);
+  const ListCard({Key key, this.index, this.managerList}) : super(key: key);
 
   ManagerController get controller => Modular.get();
 
   @override
   Widget build(BuildContext context) {
-    ManagerModel manager = controller.manager.value[index];
+    ManagerModel manager = managerList[index];
+    String fullName = manager.post + " " + manager.name;
     final iconSize = 18.0;
 
     return Card(
       elevation: 8.0,
-      color: Colors.white54,
+      color: buildCardColor(manager),
       margin: EdgeInsets.symmetric(horizontal: 4.0, vertical: 3.0),
       child: Padding(
         padding: const EdgeInsets.all(2.0),
@@ -34,7 +36,6 @@ class ListCard extends StatelessWidget {
                 Color(0xFF1C2C43),
               ],
             ),
-            //borderRadius: BorderRadius.circular(30),
           ),
           height: 90,
           child: ListTile(
@@ -53,11 +54,15 @@ class ListCard extends StatelessWidget {
               child: Icon(
                 buildIcon(manager.condition),
                 color: buildColor(manager.condition),
-                size: 36,
+                size: 32,
               ),
             ),
+            onTap: () {
+              controller.setSelectedUser(manager.id);
+              controller.listUserMissions(context, fullName);
+            },
             title: Text(
-              manager.post + " " + manager.name,
+              fullName,
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white,
@@ -142,7 +147,7 @@ class ListCard extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        width: 30,
+                        width: 15,
                       ),
                       Column(
                         children: <Widget>[
@@ -170,31 +175,78 @@ class ListCard extends StatelessWidget {
                           SizedBox(
                             height: 4,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.timelapse,
-                                color: buildColor(manager.condition),
-                                size: 18,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 1.0, vertical: 0.0),
-                              ),
-                              Text(
-                                buildAmount(manager.condition, manager.amount),
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
+                          Visibility(
+                            visible: manager.condition,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text('Mod.',
+                                    style: TextStyle(
+                                      color: buildColor(manager.condition),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13,
+                                    )),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 3.0, vertical: 0.0),
                                 ),
-                              ),
-                            ],
-                          ),
+                                Text(
+                                  manager.modulus ? 'Sim' : 'Não',
+                                  style: TextStyle(
+                                    color: !manager.modulus
+                                        ? Colors.red[300]
+                                        : Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ],
                   )
+                ],
+              ),
+            ),
+            trailing: Container(
+              padding: EdgeInsets.only(left: 16.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  left: BorderSide(
+                    width: 2.0,
+                    color: Colors.white70,
+                  ),
+                ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(top: 7.0),
+                    child: Text(
+                      buildAmount(manager.condition, manager.amount),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.0,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 8.0),
+                    padding: EdgeInsets.only(top: 5.0),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top: BorderSide(width: 1, color: Colors.white))),
+                    child: Text(
+                      manager.prevision.toStringAsFixed(0),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 9.0,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -203,6 +255,12 @@ class ListCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Color buildCardColor(ManagerModel manager) {
+  if (manager.condition && !manager.modulus && manager.prevision - manager.amount <= 30)
+    return Colors.red[300];
+  return Colors.white54;
 }
 
 Color buildColor(bool condition) {
