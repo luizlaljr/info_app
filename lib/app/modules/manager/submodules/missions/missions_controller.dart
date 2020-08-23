@@ -42,12 +42,11 @@ abstract class _MissionsControllerBase with Store {
   @observable
   List<MissionModel> filteredDate;
 
+  @observable
+  bool checkboxMissionOrder = true;
 
   @observable
-  bool checkboxMissionOrder = false;
-
-  @observable
-  bool checkboxServiceOrder = false;
+  bool checkboxServiceOrder = true;
 
   @observable
   String inputTextNumber = '';

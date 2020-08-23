@@ -107,6 +107,19 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   );
                 }
                 List<MissionModel> missionsList = buildMissionsList(controller);
+                if (missionsList.isEmpty){
+                  return Expanded(
+                    child: Container(
+                      color: Color(0xFF22466A),
+                      child: Center(
+                        child: Text(
+                          'Não há missões nesta condição.',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  );
+                }
                 return Expanded(
                   child: Container(
                     color: Color(0xFF22466A),
@@ -132,9 +145,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
 List<MissionModel> buildMissionsList(controller) {
   if (controller.filteredMissions == null) {
-    return controller.missions.value;
-  }
-  if (controller.filteredMissions.isEmpty) {
     return controller.missions.value;
   }
   return controller.filteredMissions;

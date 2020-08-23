@@ -41,10 +41,10 @@ abstract class _HomeControllerBase with Store {
   List<MissionModel> filteredDate;
 
   @observable
-  bool checkboxMissionOrder = false;
+  bool checkboxMissionOrder = true;
 
   @observable
-  bool checkboxServiceOrder = false;
+  bool checkboxServiceOrder = true;
 
   @observable
   String inputTextNumber = '';

@@ -101,6 +101,19 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
                   );
                 }
                 List<ManagerModel> managerList = buildManagerList(controller);
+                if (managerList.isEmpty){
+                  return Expanded(
+                    child: Container(
+                      color: Color(0xFF22466A),
+                      child: Center(
+                        child: Text(
+                          'Não há militares nesta condição.',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  );
+                }
                 return Expanded(
                   child: Container(
                     color: Color(0xFF22466A),
@@ -126,9 +139,6 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
 
 List<ManagerModel> buildManagerList(controller) {
   if (controller.filteredManager == null) {
-    return controller.manager.value;
-  }
-  if (controller.filteredManager.isEmpty) {
     return controller.manager.value;
   }
   return controller.filteredManager;

@@ -44,10 +44,10 @@ abstract class _ManagerControllerBase with Store {
   List<ManagerModel> filteredName;
 
   @observable
-  bool checkboxComissioned = false;
+  bool checkboxComissioned = true;
 
   @observable
-  bool checkboxDaily = false;
+  bool checkboxDaily = true;
 
   @observable
   bool checkboxNineNine = false;
