@@ -11,7 +11,7 @@ class BuildProfileImageWidget extends StatelessWidget {
     StatusController controller = Modular.get();
 
     UserModel user = controller.user.value;
-    
+
     return Observer(
       builder: (_) {
         String skin = controller.userSkin.value;
@@ -34,26 +34,29 @@ class BuildProfileImageWidget extends StatelessWidget {
         }
         return Center(
           child: Container(
-            child: IconButton(
-              icon: Icon(
-                Icons.edit,
-                color: Colors.white70,
+            child: Visibility(
+              visible: user.activity == 'D' ? false : true,
+              child: IconButton(
+                icon: Icon(
+                  Icons.edit,
+                  color: Colors.white70,
+                ),
+                padding: EdgeInsets.only(
+                  top: 30,
+                  left: 100,
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    // We will now use PageRouteBuilder
+                    PageRouteBuilder(
+                      opaque: false,
+                      pageBuilder: (BuildContext context, a, __) {
+                        return OptionsChoiceWidget();
+                      },
+                    ),
+                  ); // PageRouteBuilder
+                },
               ),
-              padding: EdgeInsets.only(
-                top: 30,
-                left: 100,
-              ),
-              onPressed: () {
-                Navigator.of(context).push(
-                  // We will now use PageRouteBuilder
-                  PageRouteBuilder(
-                    opaque: false,
-                    pageBuilder: (BuildContext context, a, __) {
-                      return OptionsChoiceWidget();
-                    },
-                  ),
-                ); // PageRouteBuilder
-              },
             ),
             width: 140.0,
             height: 140.0,
