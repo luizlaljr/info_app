@@ -24,10 +24,33 @@ mixin _$StatusController on _StatusControllerBase, Store {
     });
   }
 
+  final _$userSkinAtom = Atom(name: '_StatusControllerBase.userSkin');
+
+  @override
+  ObservableFuture<dynamic> get userSkin {
+    _$userSkinAtom.reportRead();
+    return super.userSkin;
+  }
+
+  @override
+  set userSkin(ObservableFuture<dynamic> value) {
+    _$userSkinAtom.reportWrite(value, super.userSkin, () {
+      super.userSkin = value;
+    });
+  }
+
+  final _$setSkinAsyncAction = AsyncAction('_StatusControllerBase.setSkin');
+
+  @override
+  Future<dynamic> setSkin(dynamic skin) {
+    return _$setSkinAsyncAction.run(() => super.setSkin(skin));
+  }
+
   @override
   String toString() {
     return '''
-user: ${user}
+user: ${user},
+userSkin: ${userSkin}
     ''';
   }
 }

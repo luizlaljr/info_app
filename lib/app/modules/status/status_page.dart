@@ -19,7 +19,6 @@ class StatusPage extends StatefulWidget {
 }
 
 class _StatusPageState extends ModularState<StatusPage, StatusController> {
-  //use 'controller' variable to access controller
 
   @override
   Widget build(BuildContext context) {

@@ -14,8 +14,18 @@ abstract class _StatusControllerBase with Store {
   @observable
   ObservableFuture user;
 
+  @observable
+  ObservableFuture userSkin;
+
   _StatusControllerBase() {
     user = userRepository.getUser().asObservable();
+    userSkin = userRepository.getSkin().asObservable();
+  }
+
+  @action
+  Future setSkin(skin) async {
+      await userRepository.setSkin(skin);
+      userSkin = userRepository.getSkin().asObservable();
   }
 
   Future logoff() async {

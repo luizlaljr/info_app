@@ -11,21 +11,37 @@ class UserRepository extends Disposable {
 
   UserRepository();
 
-  Future<UserModel> getUser() async {    
-      final user = await _auth.getUser();
-      final response = await _client.dio.get('users/$user/totalizers',
-          options: Options(headers: {'requirestoken': true}));
+  Future<UserModel> getUser() async {
+    final user = await _auth.getUser();
+    final response = await _client.dio.get('users/$user/totalizers',
+        options: Options(headers: {'requirestoken': true}));
 
-      UserModel userModel = UserModel.fromJson(response.data);
-      List<ReportModel> listReports = [];
-      for (var report in userModel.reports) {
-        ReportModel reportModel = ReportModel(
-            link: report.link, income: report.income, amount: report.amount);
-        listReports.add(reportModel);
-      }
-      userModel.reports = listReports;
-    
+    UserModel userModel = UserModel.fromJson(response.data);
+    List<ReportModel> listReports = [];
+    for (var report in userModel.reports) {
+      ReportModel reportModel = ReportModel(
+          link: report.link, income: report.income, amount: report.amount);
+      listReports.add(reportModel);
+    }
+    userModel.reports = listReports;
+
     return userModel;
+  }
+
+  Future setSkin(String skin) async {
+    final user = await _auth.getUser();
+    await _client.dio.put('users/$user/$skin',
+        options: Options(headers: {'requirestoken': true}));
+  }
+
+  Future<String> getSkin() async {
+    final user = await _auth.getUser();
+    final response = await _client.dio.get('users/$user/skin',
+        options: Options(headers: {'requirestoken': true}));
+
+    final userSkin = response.data['skin'];
+
+    return userSkin;
   }
 
   //dispose will be called automatically
