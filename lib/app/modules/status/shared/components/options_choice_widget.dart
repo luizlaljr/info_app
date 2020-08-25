@@ -14,52 +14,69 @@ class OptionsChoiceWidget extends StatelessWidget {
       backgroundColor: Colors.black54,
       body: Center(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.47,
+          height: 366,
           width: MediaQuery.of(context).size.width * 0.86,
           decoration: BoxDecoration(
-            color: Color(0xFF22466A),
+            color: Color(0xFF12365A),
             borderRadius: BorderRadius.circular(30.0),
             border: Border.all(
               color: Color(0xFF6286AA),
               width: 3.0,
             ),
           ),
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Wrap(
-                      children: List.generate(imageList.length, (index) {
-                    return FlatButton(
-                      padding: EdgeInsets.all(10),
-                      onPressed: () => {
-                        controller.setSkin(imageList[index]),
-                        Navigator.of(context).pop(),
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.32,
-                        height: MediaQuery.of(context).size.width * 0.30,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(buildProfileImage(
-                                user.sex, user.activity, imageList[index])),
-                            fit: BoxFit.cover,
-                          ),
-                          color: Colors.blue[200],
-                          borderRadius: BorderRadius.circular(30.0),
-                          border: Border.all(
-                            color: Color(0xFF6286AA),
-                            width: 6.0,
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 7),
+                child: Center(
+                  child: Text(
+                    "Escolha seu avatar...",
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                ),
+              ),
+              Divider(
+                height: 4.0,
+                color: Colors.white,
+                thickness: 0.5,
+              ),
+              Container(
+                height: 300,
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Wrap(
+                  children: List.generate(
+                    imageList.length,
+                    (index) {
+                      return FlatButton(
+                        padding: EdgeInsets.all(5),
+                        onPressed: () => {
+                          controller.setSkin(imageList[index]),
+                          Navigator.of(context).pop(),
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.32,
+                          height: MediaQuery.of(context).size.width * 0.32,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(buildProfileImage(
+                                  user.sex, user.activity, imageList[index])),
+                              fit: BoxFit.cover,
+                            ),
+                            color: Colors.blue[200],
+                            borderRadius: BorderRadius.circular(30.0),
+                            border: Border.all(
+                              color: Color(0xFF6286AA),
+                              width: 6.0,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  })),
+                      );
+                    },
+                  ),
                 ),
-              ],
-            ),
-          ), // FlatButton
+              ),
+            ],
+          ),
         ),
       ),
     );
