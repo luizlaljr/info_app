@@ -73,7 +73,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         color: Colors.white,
                         thickness: 0.5,
                       ),
-                      DrawerModulusWidget(title: "Módulo"),
+                      DrawerProjectWidget(title: "Projeto"),
                       Divider(
                         height: 4.0,
                         color: Colors.white,
@@ -85,7 +85,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         color: Colors.white,
                         thickness: 0.5,
                       ),
-                      DrawerProjectWidget(title: "Projeto"),
+                      DrawerModulusWidget(title: "Módulo"),
                       Divider(
                         height: 4.0,
                         color: Colors.white,
