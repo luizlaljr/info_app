@@ -67,7 +67,7 @@ class ListCard extends StatelessWidget {
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
-                  fontSize: 16,
+                  fontSize: 14,
                   letterSpacing: 6),
             ),
             subtitle: Container(
