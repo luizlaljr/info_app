@@ -284,9 +284,6 @@ class Filters {
     String name = inputTextName;
     if (managerList != null) {
       managerIterable = managerList.where((manager) {
-        if (name.isEmpty) {
-          return false;
-        }
         return manager.name.contains(name);
       });
       resultList = managerIterable.toList();

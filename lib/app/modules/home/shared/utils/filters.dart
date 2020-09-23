@@ -60,9 +60,6 @@ class Filters {
     String number = inputTextNumber;
     if (missionsList != null) {
       missionsIterable = missionsList.where((missions) {
-        if (number.isEmpty) {
-          return false;
-        }
         return missions.number.contains(number);
       });
       resultList = missionsIterable.toList();
@@ -77,9 +74,6 @@ class Filters {
     String locale = inputTextLocale;
     if (missionsList != null) {
       missionsIterable = missionsList.where((missions) {
-        if (locale.isEmpty) {
-          return false;
-        }
         return missions.locale.contains(locale);
       });
       resultList = missionsIterable.toList();
@@ -94,9 +88,6 @@ class Filters {
     String date = inputTextDate;
     if (missionsList != null) {
       missionsIterable = missionsList.where((missions) {
-        if (date.isEmpty) {
-          return false;
-        }
         return missions.start.contains(date);
       });
       resultList = missionsIterable.toList();
