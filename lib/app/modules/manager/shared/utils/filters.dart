@@ -242,7 +242,7 @@ class Filters {
     String selectedOperator = selectedOptionsOperator;
     if (managerList != null) {
       managerIterable = managerList.where((manager) {
-        if (selectedOperator.isEmpty || amount < 0) return false;
+        if (selectedOperator == null || amount < 0) return false;
         if (selectedOperator == '>=') return manager.prevision - manager.amount >= amount;
         if (selectedOperator == '<=') return manager.prevision - manager.amount <= amount;
         return true;
