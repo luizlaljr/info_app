@@ -18,37 +18,55 @@ class TabbPage extends StatefulWidget {
 class _TabbPageState extends ModularState<TabbPage, TabbController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: controller.pageController,
-        children: buildWidgets(controller.profile),
-        onPageChanged: controller.changePage,
-      ),
-      bottomNavigationBar: Observer(
-        builder: (BuildContext context) {
-          return BottomNavigationBar(
-            backgroundColor: Color(0xFF12365A),
-            currentIndex: controller.selectIndex ?? 0,
-            onTap: controller.changePage,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white38,
-            showUnselectedLabels: false,
-            items: buildNavigationBarItens(controller.profile.value),
-          );
-        },
-      ),
-    );
+    return Observer(builder: (_) {
+      if (controller.profile.error != null) {
+        Container(
+          color: Color(0xFF22466A),
+          child: Center(
+            child: Text(
+              'Erro de Conexão!',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        );
+      }
+      if (controller.profile.value == null) {
+        return CircularProgressIndicator();
+      }
+      return Scaffold(
+        body: PageView(
+          controller: controller.pageController,
+          children: buildWidgets(controller.profile.value),
+          onPageChanged: controller.changePage,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color(0xFF12365A),
+          currentIndex: controller.selectIndex ?? 0,
+          onTap: controller.changePage,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white38,
+          showUnselectedLabels: false,
+          items: buildNavigationBarItens(controller.profile.value),
+        ),
+      );
+    });
   }
 }
 
-List<Widget> buildWidgets(profile) {
+List<Widget> buildWidgets(String profile) {
   List<Widget> list = [];
   Widget statusWidget = StatusModule();
   list.add(statusWidget);
   Widget homeWidget = HomeModule();
   list.add(homeWidget);
-  if (profile != 'C') {
-    Widget managerWidget = RouterOutlet(module: ManagerModule(),keepAlive: false,);
+  if (profile != 'C' && profile != null) {
+    Widget managerWidget = RouterOutlet(
+      module: ManagerModule(),
+      keepAlive: false,
+    );
     list.add(managerWidget);
   }
   return list;
@@ -68,7 +86,7 @@ List<BottomNavigationBarItem> buildNavigationBarItens(String profile) {
     activeIcon: Icon(Icons.flight),
   );
   list.add(homeItem);
-  if (profile != 'C') {
+  if (profile != 'C' && profile != null) {
     BottomNavigationBarItem managerItem = BottomNavigationBarItem(
       icon: Icon(Icons.group),
       title: Text('Controles'),
