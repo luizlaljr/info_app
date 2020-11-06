@@ -1,4 +1,5 @@
 import 'package:info_app/app/modules/home/shared/models/mission_model.dart';
+import 'package:info_app/app/shared/utils/formatter.dart';
 import 'package:mobx/mobx.dart';
 
 class Filters {
@@ -88,7 +89,7 @@ class Filters {
     String date = inputTextDate;
     if (missionsList != null) {
       missionsIterable = missionsList.where((missions) {
-        return missions.start.contains(date);
+        return missions.start.contains(Formatter.dateStandart(date));
       });
       resultList = missionsIterable.toList();
     }

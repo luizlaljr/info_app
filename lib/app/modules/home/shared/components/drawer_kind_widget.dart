@@ -39,7 +39,7 @@ class DrawerKindWidget extends StatelessWidget {
                       ),
                       Icon(
                         Icons.local_airport,
-                        color: Colors.lightGreenAccent,
+                        color: Colors.white,
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -56,7 +56,7 @@ class DrawerKindWidget extends StatelessWidget {
                       ),
                       Icon(
                         Icons.insert_drive_file,
-                        color: Colors.lightBlueAccent,
+                        color: Colors.white,
                       ),
                     ],
                   ),

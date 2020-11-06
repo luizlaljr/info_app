@@ -12,8 +12,13 @@ class Formatter {
     return formatted;
   }
 
+  static String dateStandart(String dateFormatted) {
+    var date = dateFormatted.split('/').reversed.join('-');
+    return date;
+  }
+
   static String money(moneyNoFormated) {
-    var formatter = new NumberFormat('#,##0.00','pt');
+    var formatter = new NumberFormat('#,##0.00', 'pt');
     String formatted = formatter.format(moneyNoFormated);
     return formatted;
   }
