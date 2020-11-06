@@ -9,9 +9,7 @@ class Filters {
     filters.forEach(
       (element) {
         if (element != null) {
-          if (element.isNotEmpty) {
-            managerList.add(element);
-          }
+          managerList.add(element);
         }
       },
     );
@@ -73,7 +71,8 @@ class Filters {
         }
         return true;
       });
-      resultList = managerIterable.toList();
+      resultList =
+          managerIterable.length == 0 ? null : managerIterable.toList();
     }
     return resultList;
   }
@@ -83,6 +82,7 @@ class Filters {
     List<ManagerModel> resultList;
     List<ManagerModel> managerList = manager.value;
     var managerIterable;
+    var nothingSelected = false;
     var pilot = checkboxPilot;
     var mechanic = checkboxMechanic;
     var attendant = checkboxAttendant;
@@ -90,6 +90,7 @@ class Filters {
     if (managerList != null) {
       managerIterable = managerList.where((manager) {
         if (!pilot && !mechanic && !attendant && !doctor) {
+          nothingSelected = true;
           return false;
         }
         if (pilot && !mechanic && !attendant && !doctor) {
@@ -144,7 +145,7 @@ class Filters {
         }
         return true;
       });
-      resultList = managerIterable.toList();
+      resultList = nothingSelected ? null : managerIterable.toList();
     }
     return resultList;
   }
@@ -228,7 +229,8 @@ class Filters {
         }
         return true;
       });
-      resultList = managerIterable.toList();
+      resultList =
+          managerIterable.length == 0 ? null : managerIterable.toList();
     }
     return resultList;
   }
@@ -243,11 +245,14 @@ class Filters {
     if (managerList != null) {
       managerIterable = managerList.where((manager) {
         if (selectedOperator == null || amount < 0) return false;
-        if (selectedOperator == '>=') return manager.prevision - manager.amount >= amount;
-        if (selectedOperator == '<=') return manager.prevision - manager.amount <= amount;
+        if (selectedOperator == '>=')
+          return manager.prevision - manager.amount >= amount;
+        if (selectedOperator == '<=')
+          return manager.prevision - manager.amount <= amount;
         return true;
       });
-      resultList = managerIterable.toList();
+      resultList =
+          managerIterable.length == 0 ? null : managerIterable.toList();
     }
     return resultList;
   }
@@ -272,12 +277,14 @@ class Filters {
         }
         return true;
       });
-      resultList = managerIterable.toList();
+      resultList =
+          managerIterable.length == 0 ? null : managerIterable.toList();
     }
     return resultList;
   }
 
-  static List<ManagerModel> name(ObservableFuture manager, String inputTextName){
+  static List<ManagerModel> name(
+      ObservableFuture manager, String inputTextName) {
     List<ManagerModel> resultList;
     List<ManagerModel> managerList = manager.value;
     var managerIterable;
@@ -286,7 +293,8 @@ class Filters {
       managerIterable = managerList.where((manager) {
         return manager.name.contains(name);
       });
-      resultList = managerIterable.toList();
+      resultList =
+          managerIterable.length == 0 ? null : managerIterable.toList();
     }
     return resultList;
   }

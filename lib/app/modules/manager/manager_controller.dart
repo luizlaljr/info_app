@@ -44,10 +44,10 @@ abstract class _ManagerControllerBase with Store {
   List<ManagerModel> filteredName;
 
   @observable
-  bool checkboxComissioned = true;
+  bool checkboxComissioned = false;
 
   @observable
-  bool checkboxDaily = true;
+  bool checkboxDaily = false;
 
   @observable
   bool checkboxNineNine = false;
@@ -92,7 +92,7 @@ abstract class _ManagerControllerBase with Store {
   String inputTextName;
 
   @observable
-  List<String> optionsOperator = ['','<=', '>='];
+  List<String> optionsOperator = ['', '<=', '>='];
 
   @observable
   String selectedOptionsOperator = '';
@@ -291,7 +291,8 @@ abstract class _ManagerControllerBase with Store {
 
   @action
   List<ManagerModel> filterModulus() {
-    return Filters.modulus(manager, checkboxHaveModulus, checkboxDontHaveModulus);
+    return Filters.modulus(
+        manager, checkboxHaveModulus, checkboxDontHaveModulus);
   }
 
   @action
