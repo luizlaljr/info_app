@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'shared/components/build_fullname_widget.dart';
@@ -19,35 +20,37 @@ class StatusPage extends StatefulWidget {
 }
 
 class _StatusPageState extends ModularState<StatusPage, StatusController> {
-
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       body: Container(
         color: Color(0xFF22466A),
         child: Observer(
           builder: (_) {
             if (controller.user.error != null) {
-              return 
-                Container(
-                  color: Color(0xFF22466A),
-                  child: Center(
-                    child: Text(
-                      'Erro de Conexão!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
+              return Container(
+                color: Color(0xFF22466A),
+                child: Center(
+                  child: Text(
+                    'Erro de Conexão!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
                     ),
                   ),
+                ),
               );
             }
             if (controller.user.value == null) {
               return Container(
-                  color: Color(0xFF22466A),
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                color: Color(0xFF22466A),
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
             }
             return Stack(
@@ -72,16 +75,15 @@ class _StatusPageState extends ModularState<StatusPage, StatusController> {
                       ),
                       Flex(
                         direction: Axis.vertical,
-                            children: <Widget>[
-                              SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height / 11),
-                              BuildProfileImageWidget(),
-                              BuildFullnameWidget(),
-                              BuildStatusWidget(),
-                              BuildStatContainerWidget(),
-                              BuildInfoContainerWidget(),
-                            ],
+                        children: <Widget>[
+                          SizedBox(
+                              height: MediaQuery.of(context).size.height / 11),
+                          BuildProfileImageWidget(),
+                          BuildFullnameWidget(),
+                          BuildStatusWidget(),
+                          BuildStatContainerWidget(),
+                          BuildInfoContainerWidget(),
+                        ],
                       ),
                     ],
                   ),

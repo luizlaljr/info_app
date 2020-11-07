@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:info_app/app/modules/manager/shared/components/drawer_widget.dart';
@@ -19,6 +20,10 @@ class _ManagerPageState extends ModularState<ManagerPage, ManagerController> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
