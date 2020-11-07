@@ -99,7 +99,7 @@ class BuildInfoContainerWidget extends StatelessWidget {
                         fontStyle: FontStyle.italic),
                   ),
                   Text(
-                   'Não',
+                    buildModulusText(user.modulus),
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
@@ -155,4 +155,8 @@ class BuildInfoContainerWidget extends StatelessWidget {
 
 String buildConditionText(condition) {
   return condition ? "Comissionado" : "Diária";
+}
+
+String buildModulusText(modulus) {
+  return modulus ? "Sim" : "Não";
 }
